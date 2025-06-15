@@ -19,7 +19,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(f'Sử dụng thiết bị: {device}')
 
 # Đọc dataset
-file_path = 'classified_and_rated_tweets.csv'  # Đường dẫn tới file của bạn
+file_path = 'classified_and_rated_tweets.csv'
 df = pd.read_csv(file_path)
 
 # Chuẩn bị dữ liệu
@@ -30,7 +30,7 @@ ratings = df['Ratting'].values
 # Chuẩn hóa dữ liệu để các giá trị nằm trong khoảng từ 0 đến 1
 ratings = ratings / ratings.max()
 
-# Chia dữ liệu thành tập huấn luyện và tập kiểm tra
+
 train_user, test_user, train_item, test_item, train_ratings, test_ratings = train_test_split(user_ids, item_ids, ratings, test_size=0.2, random_state=42)
 
 train_user = torch.tensor(train_user, dtype=torch.long).to(device)
